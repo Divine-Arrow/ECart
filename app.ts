@@ -1,9 +1,9 @@
-import server from "./src/index";
+import Server from "./src/index";
 
 const PORT = 8080;
 
-const newServer = new server();
+const server = new Server();
 
-newServer.init(PORT)
+server.init(PORT)
     .then(port => console.log(`Server is running at port: ${port}`))
     .catch(err => console.log({err}));

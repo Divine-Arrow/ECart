@@ -4,7 +4,7 @@
   "description": "IDP assignment, creating again as per the OOPS concept",
   "main": "./dist/app.js",
   "scripts": {
-    "start": "node ./build/index.js",
+    "start": "tsc && node dist/app.js",
     "dev": "nodemon app.ts",
     "build": "tsc"
   },

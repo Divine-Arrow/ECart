@@ -1,16 +1,30 @@
 import { Request, Response } from "express";
-import sequelize, { QueryTypes } from "sequelize";
-import seqDb from "./../config/db.config";
+import ProductMdl from "../service/product.service";
 
-class ProductCtrl {
-    
-    public async getAllProducts(req: Request, res: Response): Promise<void> {
-        try {
-            const result = await seqDb.query("SELECT * FROM `products`", { type: QueryTypes.SELECT });
-            res.status(200).json({ result: result })
-        } catch(error) {
-            res.status(400).json({error})
-        }
+const ProductModel = new ProductMdl();
+
+
+export default class ProductCtrl {
+
+
+    private errorHandler(req: Request, res: Response, error: Error) {
+        res.status(400).json({error});
     }
-};
-export default ProductCtrl;
+
+    public async createProd(req: Request, res: Response): Promise<void> {
+        try {
+            const { name, category, price, desc, title } = req.body;
+            await ProductModel.create({ name, category, price, desc, title });
+            res.status(201).json({ result: "Resource Created Successfully" });
+        } catch(error) { this.errorHandler(req, res, error); }
+    }
+
+    public async updateProd(req: Request, res: Response): Promise<void> {
+        try {
+            const productId = (+ req.params.id);
+            const { name, category, price, desc, title } = req.body;
+            await ProductModel.update( productId , { name, category, price, desc, title });
+            res.status(200).json({ result: "Resource updated successfully" });
+        } catch(error) { this.errorHandler(req, res, error); }
+    }
+}

@@ -4,7 +4,7 @@ import express from "express";
 
 
 import seqDb from "./config/db.config";
-import productRouter from "./routes/routes";
+import productRouter from "./routes/product.routes";
 
 export default class Server {
     private app;
