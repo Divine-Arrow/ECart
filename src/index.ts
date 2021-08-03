@@ -1,7 +1,7 @@
 import express from "express";
+
 // import seqDb from "@config/db.config";
 // import productRouter from "@routes/routes";
-
 
 import seqDb from "./config/db.config";
 import productRouter from "./routes/product.routes";
@@ -30,7 +30,7 @@ export default class Server {
             .catch(() => console.log("Facing error while connecting to DB.") );
     }
     
-    init(port: number): Promise<number | string> {
+    public init(port: number): Promise<number | string> {
         return new Promise((resolve, reject) => {
             this.app.listen(port, () => resolve(port))
                 .on("error", () => reject("Somthing went wrong"));

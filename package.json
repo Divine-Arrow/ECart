@@ -11,6 +11,7 @@
   "author": "Bhupender Singh",
   "license": "ISC",
   "dependencies": {
+    "@types/qs": "^6.9.7",
     "express": "^4.17.1",
     "joi": "^17.4.2",
     "pg": "^8.7.1",

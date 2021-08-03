@@ -11,6 +11,7 @@ export default class ProductVal {
         title: Joi.string(),
         id: Joi.number()
     };
+
     static updateProductSkel = {
         name: Joi.string(),
         category: Joi.string(),

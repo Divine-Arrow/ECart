@@ -10,7 +10,13 @@ const productVal = new ProductVal;
 const expRouter: Router  = express.Router();
 
 // expRouter.get("/products", productCtrl.getAllProducts );
-expRouter.post("/products", productVal.validateNewProd, productCtrl.createProd );
-expRouter.put("/products/:id", productVal.validateUpdateProd, productCtrl.updateProd );
+expRouter.post("/products", productVal.validateNewProd, productCtrl.createProd );   // Create New Product
+expRouter.put("/products/:id", productVal.validateUpdateProd, productCtrl.updateProd ); // Update existing product
+expRouter.patch("/products/disable/:id", productCtrl.disableProd ); // Disable a product
+expRouter.get("/products", productCtrl.getFilteredProd ); // Disable a product
+expRouter.delete("/products/:id", productCtrl.deleteProduct ); // Disable a product
+
+
+// expRouter.delete("/products/:id", productVal.validateUpdateProd, productCtrl.disableProd );  // delete
 
 export default expRouter;
